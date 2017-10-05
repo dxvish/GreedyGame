@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-md-4 col-sm-4">
                         <div class="panel panel-default">
-                            <div class="panel-heading">Select Data Range</div>
+                            <div class="panel-heading">Date Range</div>
                             <div class="panel-body">
                                 <form class="form-horizontal">
                                     <div class="form-group">
@@ -51,12 +51,12 @@
                                             <datepicker date-format="yyyy-MM-dd">
                                                 <input ng-model="toDate" type="text" class="form-control" id="to_date" placeholder="To Date">
                                             </datepicker>
-                                            
+
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-12"> 
-                                            <input type="submit" class="form-control btn btn-primary" value="Fetch">
+                                            <input type="submit" class="form-control btn btn-default" value="Fetch" ng-click="fetchData()">
                                         </div>
                                     </div>
                                 </form>
@@ -70,25 +70,44 @@
                                 <div class="btn-group pull-right">
                                     <a class="toggle-dropdown " data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"> <span class="glyphicon glyphicon-chevron-down"></span>
                                     </a>
-                                
+
                                     <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#">Chart<span class="glyphicon glyphicon-stats pull-right "></span></a></li>
-                                        <li><a href="#">Table<span class="glyphicon glyphicon-th pull-right"></span></a></li>
-                                        
+                                        <li><a href="#" ng-click="toggleView = !toggleView">Chart<span class="glyphicon glyphicon-stats pull-right "></span></a></li>
+                                        <li><a href="#" ng-click="toggleView = !toggleView">Table<span class="glyphicon glyphicon-th pull-right"></span></a></li>
+
                                     </ul>
                                 </div>
                             </div>
                             <div class="panel-body">
-                                {{fromDate}}
-                                {{toDate}}
-                                <svg class="chart">
+                                <div ng-show="invalid" class="alert alert-danger">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    <strong>Error!</strong> {{validation}}
+                                </div>
+                                <table ng-if="toggleView" class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Requests</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="adData in gameData">
+                                            <td>{{ adData.date }}</td>
+                                            <td>{{ adData.adrequest }}</td>
+                                        </tr>
+                                        <tr ng-show="!gameData.length" ><td class="alignCenter" colspan="2">No Records to Display</td></tr>
+
+                                    </tbody>
+
+                                </table>
+
+                                <svg class="chart" ng-show="toggleView">
 
                                 </svg>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <script src="static/js/greedygame.js"></script>
@@ -96,5 +115,11 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script> 
         <script src="static/js/angular-datepicker.js"></script> 
+        <script>
+//            window.setTimeout(function() {
+//                $(".alert").fadeTo(1000, 0).slideUp(1000, function(){ 
+//                });
+//            }, 5000);      
+        </script>
     </body>
 </html>
