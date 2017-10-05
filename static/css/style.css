@@ -15,19 +15,26 @@
     background-color: white;
     border-color: #e7eaec;
 
-    border-top: 2px solid lightgrey;
+    border-top: 2px solid #1ab394;
 }
 .panel-heading {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
 }
-.chart{
-/*    height:480px;*/
+a{
+    color:#1ab394;
 }
 .alignCenter{
     text-align: center
 }
-
+.chartContainer{
+  width: 100%;
+  min-height: 400px;
+}
+.btn-primary{
+ background-color: #1ab394;
+    border-color: gray;
+}
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
 }

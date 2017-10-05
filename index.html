@@ -6,12 +6,12 @@
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link href="static/css/style.css" rel="stylesheet" type="text/css"/>
         <link href="static/css/angular-datepicker.css" rel="stylesheet" type="text/css"/>
+        <link href="static/css/c3.css" rel="stylesheet" type="text/css"/>
 
     </head>
     <body>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
@@ -23,7 +23,8 @@
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">AdData <span class="sr-only">(current)</span></a></li>
+                        <li class="active"><a href="#">AdRequest <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">About Me</a></li>
                     </ul>
 
                 </div>
@@ -56,7 +57,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-12"> 
-                                            <input type="submit" class="form-control btn btn-default" value="Fetch" ng-click="fetchData()">
+                                            <input type="submit" class="form-control btn btn-primary" value="FETCH" ng-click="fetchData()">
                                         </div>
                                     </div>
                                 </form>
@@ -66,7 +67,7 @@
                     </div>
                     <div class="col-lg-9 col-md-8 col-sm-8">
                         <div class="panel panel-default">
-                            <div class="panel-heading">Trend
+                            <div class="panel-heading">AdRequest Details
                                 <div class="btn-group pull-right">
                                     <a class="toggle-dropdown " data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"> <span class="glyphicon glyphicon-chevron-down"></span>
                                     </a>
@@ -101,7 +102,7 @@
 
                                 </table>
 
-                                <svg class="chart" ng-show="toggleView">
+                                <svg class="chartContainer" id="chart" width="700" height="400" ng-show="!toggleView">
 
                                 </svg>
                             </div>
@@ -110,16 +111,18 @@
                 </div>
             </div>
         </div>
-        <script src="static/js/greedygame.js"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script> 
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="static/js/c3.js"></script>
+        <script src="static/js/charts.js"></script>
+        <script src="static/js/greedygame.js"></script>
         <script src="static/js/angular-datepicker.js"></script> 
         <script>
-//            window.setTimeout(function() {
-//                $(".alert").fadeTo(1000, 0).slideUp(1000, function(){ 
-//                });
-//            }, 5000);      
+            //            window.setTimeout(function() {
+            //                $(".alert").fadeTo(1000, 0).slideUp(1000, function(){ 
+            //                });
+            //            }, 5000);      
         </script>
     </body>
 </html>
