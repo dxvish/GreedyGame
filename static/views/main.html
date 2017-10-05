@@ -37,8 +37,8 @@
                                     <a class="toggle-dropdown " data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"> <span class="glyphicon glyphicon-chevron-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-right">
-                                        <li><a href="#" ng-click="toggleView = !toggleView">Chart<span class="glyphicon glyphicon-stats pull-right "></span></a></li>
-                                        <li><a href="#" ng-click="toggleView = !toggleView">Table<span class="glyphicon glyphicon-th pull-right"></span></a></li>
+                                        <li><a ng-click="toggleView = !toggleView">Chart<span class="glyphicon glyphicon-stats pull-right "></span></a></li>
+                                        <li><a  ng-click="toggleView = !toggleView">Table<span class="glyphicon glyphicon-th pull-right"></span></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                     <strong>Error!</strong> {{validation}}
                                 </div>
-                                <table ng-if="toggleView" class="table table-bordered">
+                                <table ng-show="toggleView" class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th>Date</th>

@@ -28,12 +28,15 @@ a{
     text-align: center
 }
 .chartContainer{
-  width: 100%;
-  min-height: 400px;
+    width: 100%;
+    min-height: 400px;
 }
 .btn-primary{
- background-color: #1ab394;
+    background-color: #1ab394;
     border-color: gray;
+}
+.btn-primary:hover{
+    background-color:#157763;
 }
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 
