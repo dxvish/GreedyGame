@@ -1,10 +1,30 @@
 //Dependencies : Datepicker 
-var app = angular.module("greedyadreq", ['720kb.datepicker']); 
+var app = angular.module("greedyadreq", ['720kb.datepicker','ngRoute']);
+app.config(function($routeProvider) {
+    $routeProvider
+        .when("/", {
+        controller:'adRequests',
+        templateUrl : "static/views/main.html",
+        activetab: 'home',
+    }).when("/about", {
+        controller:'other',
+        templateUrl : "static/views/about.html",
+        activetab: 'about'
+    }).when("/instruction", {
+        controller:'other',
+        templateUrl : "static/views/instruction.html",
+        activetab: 'instruction'
+    })
+        .otherwise({
+        templateUrl : "static/views/404.html"
+    });
+});
+
 //Service for fetching the API Data
 app.factory('getAdService', function($http) {
     var getAdService = {
         fetch: function(fromDate,toDate) {
-//            service returns a promise
+            //            service returns a promise
             var promise = $http.get("http://104.197.128.152/data/adrequests?from="+fromDate+"&to="+toDate).then(function (response) {
                 return response;
             },function(error){
@@ -16,21 +36,22 @@ app.factory('getAdService', function($http) {
     return getAdService;
 });
 //controller that handles the user requests
-app.controller("adRequests", ["$scope","$http","getAdService" ,function($scope,$http,getAdService) {
-$scope.toggleView = true;//Toggle between different views
-$scope.invalid = false;//Validation Flag
+app.controller("adRequests", ["$scope","$http","getAdService","$route" ,function($scope,$http,getAdService,$route) {
+    $scope.$route = $route;
+    $scope.toggleView = true;//Toggle between different views
+    $scope.invalid = false;//Validation Flag
     //Method is called when user request for data
     $scope.fetchData = function(){
-//        validating if the entered From Date is less than To Date
+        //        validating if the entered From Date is less than To Date
         if(new Date($scope.fromDate) < new Date($scope.toDate))
         {
-//            call the services fetchmethod with the from and to date
+            //            call the services fetchmethod with the from and to date
             getAdService.fetch($scope.fromDate,$scope.toDate).then(function(response) {
-//                checking the status of the requests response
+                //                checking the status of the requests response
                 if(response.status == 200){
-//                    setting the validation flag to false 
+                    //                    setting the validation flag to false 
                     $scope.invalid = false;
-//                    Setting the ADrequest data
+                    //                    Setting the ADrequest data
                     $scope.gameData = response.data.data; 
                     //Validation message
                     $scope.validation = "";
@@ -51,3 +72,7 @@ $scope.invalid = false;//Validation Flag
 
     }
 }]);
+app.controller("other", ["$scope","$route",function($scope,$route){
+    $scope.$route = $route;
+}]);
+    
