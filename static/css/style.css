@@ -1,0 +1,38 @@
+.header_logo{
+    width:110px;
+    height:30px;
+}
+.navbar{
+    border-bottom: 2px solid #1ab394;
+}
+.panel{
+    border-radius: 0px;
+}
+.panel-default > .panel-heading{
+    background-color: white;
+    border-color: #e7eaec;
+
+    border-top: 2px solid lightgrey;
+}
+.panel-heading {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.chart{
+    height:480px;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+/* Styles */
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen and (min-width : 321px) {
+/* Styles */
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+/* Styles */
+}

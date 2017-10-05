@@ -1,8 +1,100 @@
+<!DOCTYPE html>
 <html>
     <head>
-    <title>GreedyGame</title>
+        <title>GreedyGame</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="static/css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="static/css/angular-datepicker.css" rel="stylesheet" type="text/css"/>
+
     </head>
     <body>
-        <h3>Try</h3>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img class="header_logo" src="static/images/Logo.png" /></a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">AdData <span class="sr-only">(current)</span></a></li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        <div ng-app="greedyadreq" ng-controller="adRequests">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Select Data Range</div>
+                            <div class="panel-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="from_date">From:</label>
+                                        <div class="col-sm-10"> 
+                                            <datepicker date-format="yyyy-MM-dd" >
+                                                <input ng-model="fromDate" type="text" class="form-control" id="from_date" placeholder="From Date">
+                                            </datepicker>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="to_date">To:</label>
+                                        <div class="col-sm-10"> 
+                                            <datepicker date-format="yyyy-MM-dd">
+                                                <input ng-model="toDate" type="text" class="form-control" id="to_date" placeholder="To Date">
+                                            </datepicker>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12"> 
+                                            <input type="submit" class="form-control btn btn-primary" value="Fetch">
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-8 col-sm-8">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Trend
+                                <div class="btn-group pull-right">
+                                    <a class="toggle-dropdown " data-toggle="dropdown" aria-expanded="false" aria-haspopup="true"> <span class="glyphicon glyphicon-chevron-down"></span>
+                                    </a>
+                                
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li><a href="#">Chart<span class="glyphicon glyphicon-stats pull-right "></span></a></li>
+                                        <li><a href="#">Table<span class="glyphicon glyphicon-th pull-right"></span></a></li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                {{fromDate}}
+                                {{toDate}}
+                                <svg class="chart">
+
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <script src="static/js/greedygame.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script> 
+        <script src="static/js/angular-datepicker.js"></script> 
     </body>
 </html>
