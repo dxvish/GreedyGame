@@ -1,5 +1,3 @@
-# GreedyGame Challenge
-
 Features Implemented
 1) API Call to fetch the data
 2) Validating if Data is empty or not
